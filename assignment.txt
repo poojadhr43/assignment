@@ -1,0 +1,67 @@
+5) var arr = ["apple","george", "bannana","george", "orange", "paul", "apple", "orange"];
+
+let uniqueArr = arr.filter( function( element, index, inputArray ) {
+           return inputArray.indexOf(element) === index;
+    });
+
+4.a) function reverse(str){
+  return str.split("").reverse().join("");
+};
+
+b) function reverse(str){
+  return Array.from(str).reduce((rev, char)=> char + rev, ''); 
+}
+
+
+3) const json = {
+  a:5,b:{c:{d:10,e:{f:10,g:20}}}
+};
+
+let keys=[];
+
+function getAllKeys(obj) {
+
+  for (const i in obj) {
+    
+
+    keys.push(i);
+
+    if (typeof obj[i] === 'object') {
+
+      
+      extractJSON(obj[i]);
+    }
+ 
+  }
+
+  
+};
+
+getAllKeys(json);
+
+console.log(keys);
+
+2) let strArr = ['hello world','hello world'];
+
+let s = strArr.join("");
+
+console.log(Array.from(s).reduce((a, e) => { a[e] = a[e] ? a[e] + 1 : 1; return a }, {}));
+
+1) let Vs this
+
+let: 'let' is used to declare a variable and decalration and scoping of the variable is block level.
+	example		console.log(x); // shows error
+			let x=5;
+			console.log(x);
+				
+
+this: this always holds the reference to a single object, that defines the current line of code’s execution context. 
+	In global context: console.log(this); => refers to window object
+	In function context: console.log(this); => refers to window object but strict mode refers to the inner function scope 
+	function created with 'new': function employee(fn,ln){
+					this.fn = fn;
+					this.ln=ln;
+					this.getFullName =function(){return this.fn + ' '+ this.ln);
+				     }
+				     let emp1 = new employee('Pooja','Dhar'); 
+				     emp1.getFullName(); // shows function scoped data i.e Pooja Dhar
